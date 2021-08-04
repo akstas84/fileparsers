@@ -10,6 +10,7 @@ import static com.codeborne.pdftest.PDF.containsText;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
 import static ru.qa.akstas.files.utils.Files.getFile;
+import static ru.qa.akstas.files.utils.Files.getPDF;
 
 public class TxtFileTests {
 
@@ -33,7 +34,7 @@ public class TxtFileTests {
   void pdfTest() throws IOException {
     String pdfFilePath = "./src/test/resources/files/1.pdf";
     String expectedData = "Инженер LiveRebel в ZeroTurnaround";
-    PDF pdf = new PDF(getFile(pdfFilePath));
+    PDF pdf = getPDF(pdfFilePath);
     assertThat(pdf, containsText(expectedData));
   }
 }

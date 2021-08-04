@@ -1,6 +1,7 @@
 package ru.qa.akstas.files.utils;
 
 import com.codeborne.pdftest.PDF;
+import com.codeborne.xlstest.XLS;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
@@ -21,5 +22,9 @@ public class Files {
 
   public static PDF getPDF(String path) throws IOException {
     return new PDF(getFile(path));
+  }
+
+  public static XLS getXLS(String path) throws IOException {
+    return new XLS(getFile(path));
   }
 }

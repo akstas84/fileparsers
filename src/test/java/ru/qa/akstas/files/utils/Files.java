@@ -1,5 +1,6 @@
 package ru.qa.akstas.files.utils;
 
+import com.codeborne.pdftest.PDF;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
@@ -10,8 +11,15 @@ public class Files {
       return FileUtils.readFileToString(file, StandardCharsets.UTF_8);
   }
 
-  public static String readTextFromPath(String txtFilePath) throws IOException {
-    File file = new File(txtFilePath);
-    return readTextFromFile(file);
+  public static String readTextFromPath(String path) throws IOException {
+    return readTextFromFile(getFile(path));
+  }
+
+  public static File getFile(String path) {
+    return new File(path);
+  }
+
+  public static PDF getPDF(String path) throws IOException {
+    return new PDF(getFile(path));
   }
 }

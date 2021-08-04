@@ -19,6 +19,7 @@ def selenideVersion = "5.22.3",
 dependencies {
     testImplementation(
             "com.codeborne:selenide:$selenideVersion",
+            "com.codeborne:pdf-test:1.5.1",
             "org.hamcrest:hamcrest-all:1.3",
             "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     )

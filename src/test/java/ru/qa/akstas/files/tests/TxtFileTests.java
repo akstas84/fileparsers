@@ -55,4 +55,12 @@ public class TxtFileTests {
     String actualData = xls.excel.getSheetAt(0).getRow(0).getCell(0).toString();
     assertThat(actualData, containsString(expectedData));
   }
+
+  @Test
+  void xlsxTest(){
+    String xlsxFilePath = "./src/test/resources/files/1.xlsx";
+    String expectedData = "Выписка";
+    String actualData = readXlsxFromPath(xlsxFilePath);
+    assertThat(actualData, containsString(expectedData));
+  }
 }

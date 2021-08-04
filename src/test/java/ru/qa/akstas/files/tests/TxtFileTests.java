@@ -2,12 +2,11 @@ package ru.qa.akstas.files.tests;
 
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
+import net.lingala.zip4j.core.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
 import org.junit.jupiter.api.Test;
 import ru.qa.akstas.files.utils.Files;
-
-import java.io.File;
 import java.io.IOException;
-
 import static com.codeborne.pdftest.PDF.containsText;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
@@ -63,4 +62,22 @@ public class TxtFileTests {
     String actualData = readXlsxFromPath(xlsxFilePath);
     assertThat(actualData, containsString(expectedData));
   }
+
+  @Test
+  void zipTest() throws ZipException, IOException {
+      String source = "./src/test/resources/files/1.zip";
+      String destination = "./src/test/resources/files/unzip";
+      String txtFilePath = "./src/test/resources/files/unzip/1.txt";
+      String expectedData = "hello!";
+      String password = "";
+
+        ZipFile zipFile = new ZipFile(source);
+        if (zipFile.isEncrypted()) {
+          zipFile.setPassword(password);
+    }
+    zipFile.extractAll(destination);
+    String actualData = Files.readTextFromPath(txtFilePath);
+    assertThat(actualData, containsString(expectedData));
+  }
+
 }

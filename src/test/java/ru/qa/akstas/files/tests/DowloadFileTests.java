@@ -4,6 +4,8 @@ import com.codeborne.selenide.Configuration;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import ru.qa.akstas.files.utils.Files;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,7 +21,7 @@ public class DowloadFileTests {
     Configuration.downloadsFolder = "downloads";
     open("https://github.com/selenide/selenide/blob/master/README.md");
     File dowloadedFile = $("#raw-url").download();
-    String fileContent = FileUtils.readFileToString(dowloadedFile, StandardCharsets.UTF_8);
+    String fileContent = Files.readTextFromFile(dowloadedFile);
     assertThat(fileContent, fileContent.contains("Selenide = UI Testing Framework powered by Selenium WebDriver"));
   }
 

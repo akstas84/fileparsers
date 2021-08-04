@@ -27,6 +27,7 @@
 allure-results/
 gradle/
 build/
+downloads/
 bin/
 out/
 logs/
